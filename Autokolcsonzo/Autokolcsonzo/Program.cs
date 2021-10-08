@@ -28,8 +28,8 @@ namespace Kolcsonzo
 			flotta[2] = haromAuto;
 
 
-			flotta[3] = randomUjAuto(3);
-			flotta[4] = randomUjAuto(4);
+			flotta[3] = randomUjAuto(1);
+			flotta[4] = randomUjAuto(2);
 
 
 			for (int i = 0; i <= 4; i++)
@@ -119,6 +119,20 @@ namespace Kolcsonzo
 			return auto;
 		}
 
+
+		public KolcsonozhetoAuto randomHasznaltAuto()
+        {
+			KolcsonozhetoAuto auto = randomUjAuto(1);
+
+			if(auto.getGyartasEve() == 2021)
+            {
+				auto.setGyartasiIdo(auto.getGyartasEve() - 4);
+            }
+
+			auto.setMegtettKm(362000);
+
+			return auto;
+        }
 
 
 
