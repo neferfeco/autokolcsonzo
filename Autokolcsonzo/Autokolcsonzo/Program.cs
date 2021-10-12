@@ -28,11 +28,14 @@ namespace Kolcsonzo
 			flotta[2] = haromAuto;
 
 
-			flotta[3] = randomUjAuto(3);
-			flotta[4] = randomUjAuto(4);
+			flotta[3] = randomUjAuto(1);
+			flotta[4] = randomUjAuto(2);
+
+			flotta[5] = randomHasznaltAuto(5);
+			flotta[6] = randomHasznaltAuto(6);
 
 
-			for (int i = 0; i <= 4; i++)
+			for (int i = 0; i <= 6; i++)
 			{
 
 				Console.Write(flotta[i].getRendszam() + " ; ");
@@ -45,8 +48,6 @@ namespace Kolcsonzo
 				Console.Write(flotta[i].getBerelheto() + " ; ");
 				Console.WriteLine(flotta[i].getKategoria());
 			}
-
-
 
 
 
@@ -119,6 +120,20 @@ namespace Kolcsonzo
 			return auto;
 		}
 
+
+		public static KolcsonozhetoAuto randomHasznaltAuto(int seed)
+        {
+			KolcsonozhetoAuto auto = randomUjAuto(seed);
+
+			if(auto.getGyartasEve() == 2021)
+            {
+				auto.setGyartasiIdo(auto.getGyartasEve() - 4);
+            }
+
+			auto.setMegtettKm(362000);
+
+			return auto;
+        }
 
 
 

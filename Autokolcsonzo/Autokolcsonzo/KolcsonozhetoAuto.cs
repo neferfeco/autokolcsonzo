@@ -80,6 +80,10 @@ namespace Kolcsonzo
 
 
 
+        //uj!!!
+        public void setGyartasiIdo(int ev) { gyartasEve = ev; }
+
+
         /*
          * tagfüggvények
          */
