@@ -35,7 +35,10 @@ namespace Kolcsonzo
 			flotta[6] = randomHasznaltAuto(6);
 
 
-			for (int i = 0; i <= 6; i++)
+flotta[7] = adatBekeres();
+
+
+			for (int i = 0; i <= 7; i++)
 			{
 
 				Console.Write(flotta[i].getRendszam() + " ; ");
@@ -138,24 +141,126 @@ namespace Kolcsonzo
 
 		public static KolcsonozhetoAuto adatBekeres()
         {
-			/*
-			string rszam, string marka, int ev,
-			int utasok, int tartaly, double lpkm,
-			char kat
-			*/
+			//rendszám ellenőrzése
+			string rszam, ujRszam;
+			bool joE = false;
+
+			do
+			{
+				do
+				{
+					Console.WriteLine("Add meg az autó rendszámát!: ");
+					Console.WriteLine("A rendszám formátuma: kkk-sss. Pl.: ABC-123");
+
+					rszam = Console.ReadLine();
+
+				} while (rszam.Length < 7);
+
+
+				ujRszam = rszam.Substring(0, 3).ToUpper() + rszam.Substring(3, 4);
+
+				int i = 0;
+				while(ujRszam[i] >= 'A' && ujRszam[i] <= 'Z')
+				{
+					i++;
+                }
+
+				if (i >= 3) joE = true;
+
+				if (ujRszam[3] != '-') joE = false;
+
+
+				/*
+								i = 4;
+								while (ujRszam[i] >= '0' && ujRszam[i] <= '9')
+								{
+									i++;
+								}
+
+								if (i >= 7) joE = true;
+				*/
+
+				int szamTeszt =	Convert.ToInt32(ujRszam.Substring(4, 3));
+
+			} while (!joE);
+
+
+			//Gyártó bekérése
+			string gyarto;
+			do
+			{
+				Console.WriteLine("Add meg az autó gyártóját!: ");
+
+				gyarto = Console.ReadLine();
+
+			} while (gyarto.Length < 3);
 
 
 
+			//gyártási év bekérése
+			int gyev = 0;
+			do
+			{
+				Console.WriteLine("Add meg az autó gyártási évszámát!: ");
+
+				gyev = Convert.ToInt32(Console.ReadLine());
+
+			} while (1999 > gyev || gyev > 2021);
 
 
 
+			//utasszám bekérése
+			int utasok = 0;
+			do
+			{
+				Console.WriteLine("Add meg a szállítható utasok számát!: ");
+
+				utasok = Convert.ToInt32(Console.ReadLine());
+
+			} while (2 > utasok || utasok > 8);
 
 
 
+			//tartályméret bekérése
+			int tartalyMeret = 0;
+			do
+			{
+				Console.WriteLine("Add meg az üzemanyag-tartály méretét!: ");
+
+				tartalyMeret = Convert.ToInt32(Console.ReadLine());
+
+			} while (12 > tartalyMeret || tartalyMeret > 32);
 
 
 
+			//fogyasztás bekérése
+			double fogyasztas = 0.0;
+			do
+			{
+				Console.WriteLine("Add meg az autó fogyasztását!: ");
 
+				fogyasztas = Convert.ToDouble(Console.ReadLine());
+
+			} while (4.2 > fogyasztas || fogyasztas > 10.8);
+
+
+
+			//kategória bekérése
+			char kategoria = 'Z';
+			do
+			{
+				Console.WriteLine("Add meg az autó kategóriáját!: ");
+				Console.WriteLine("Lehetséges értékek: A, B, C");
+
+				kategoria = (Console.ReadLine().ToUpper())[0];
+
+			} while (kategoria != 'A' && kategoria != 'B' && kategoria != 'C');
+
+
+			KolcsonozhetoAuto auto = new KolcsonozhetoAuto(ujRszam, gyarto,
+				gyev, utasok, tartalyMeret, fogyasztas, kategoria);
+
+			return auto;
 		}
 
 	}
