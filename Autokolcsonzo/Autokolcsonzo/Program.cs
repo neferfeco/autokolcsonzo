@@ -35,12 +35,11 @@ namespace Kolcsonzo
 			flotta[6] = randomHasznaltAuto(6);
 
 
-flotta[7] = adatBekeres();
+			flotta[7] = adatBekeres();
 
 
 			for (int i = 0; i <= 7; i++)
 			{
-
 				Console.Write(flotta[i].getRendszam() + " ; ");
 				Console.Write(flotta[i].getGyarto() + " ; ");
 				Console.Write(flotta[i].getGyartasEve() + " ; ");
@@ -52,9 +51,23 @@ flotta[7] = adatBekeres();
 				Console.WriteLine(flotta[i].getKategoria());
 			}
 
+            for (int i = 0; i <= 7; i++)
+            {
+				flotta[i].kategoriaBeallitas();
+            }
 
-
-
+			for (int i = 0; i <= 7; i++)
+			{
+				Console.Write(flotta[i].getRendszam() + " ; ");
+				Console.Write(flotta[i].getGyarto() + " ; ");
+				Console.Write(flotta[i].getGyartasEve() + " ; ");
+				Console.Write(flotta[i].getUtasSzam() + " ; ");
+				Console.Write(flotta[i].getuzemanyagMennyiseg() + " ; ");
+				Console.Write(flotta[i].getFogyasztas() + " ; ");
+				Console.Write(flotta[i].getMegtettKm() + " ; ");
+				Console.Write(flotta[i].getBerelheto() + " ; ");
+				Console.WriteLine(flotta[i].getKategoria());
+			}
 
 
 
@@ -262,6 +275,13 @@ flotta[7] = adatBekeres();
 
 			return auto;
 		}
+
+
+
+
+
+
+
 
 	}
 }
